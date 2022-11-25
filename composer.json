@@ -35,8 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Emsifa\\RandomImage\\": "src",
-            "Emsifa\\RandomImage\\Database\\Factories\\": "database/factories"
+            "Emsifa\\RandomImage\\": "src"
         }
     },
     "autoload-dev": {
@@ -62,10 +61,7 @@
         "laravel": {
             "providers": [
                 "Emsifa\\RandomImage\\RandomImageServiceProvider"
-            ],
-            "aliases": {
-                "RandomImage": "Emsifa\\RandomImage\\Facades\\RandomImage"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
