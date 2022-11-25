@@ -25,7 +25,7 @@ class RandomImage
             : "https://source.unsplash.com/random/{$query}";
     }
 
-    public function store(string $directory = '', ?string $disk = null): string
+    public function store(string $directory = '', ?string $disk = null): ImageResult
     {
         $filename = Str::random(28).'-'.uniqid().'.jpeg';
         $filepath = rtrim($directory, '/').'/'.$filename;
@@ -33,7 +33,7 @@ class RandomImage
         return $this->storeAs($filepath, $disk);
     }
 
-    public function storeAs(string $filepath, ?string $disk = null): string
+    public function storeAs(string $filepath, ?string $disk = null): ImageResult
     {
         $content = $this->download();
         Storage::disk($disk)->put($filepath, $content);
