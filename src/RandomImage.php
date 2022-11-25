@@ -8,8 +8,6 @@ class RandomImage
         protected ?int $width = null,
         protected ?int $height = null,
         protected ?string $query = null,
-        protected ?string $agent = null,
-        protected int $timeout = 10,
     ) {
     }
 
@@ -55,15 +53,11 @@ class RandomImage
         ?int $width = null,
         ?int $height = null,
         ?string $query = null,
-        ?string $agent = null,
-        int $timeout = 10,
-    ): static {
-        return new static(
+    ): self {
+        return new self(
             width: $width,
             height: $height,
             query: $query,
-            agent: $agent,
-            timeout: $timeout,
         );
     }
 }
