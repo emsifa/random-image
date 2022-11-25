@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/emsifa/random-image/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/emsifa/random-image/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/emsifa/random-image.svg?style=flat-square)](https://packagist.org/packages/emsifa/random-image)
 
-RandomImage is Laravel helper to get random image from [Unsplash](https://www.unsplash.com) and store it to your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
+RandomImage is a Laravel helper to get random image from [Unsplash](https://www.unsplash.com) and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
 
 ## Features
 
@@ -86,9 +86,7 @@ RandomImage::make()->storeAs('images/my-image.jpeg')->url(); // "http://your-app
 
 ### Usage Example in Model Factory
 
-Basically this package is designed to be used in model factory, that is why 3 methods above returns a string.
-So in order to use it in model factory you can just call method in example aboves in your model factory like this:
-
+This package is designed to be used in the model factory, which is why the 3 methods above return a string. So to use it in the model factory you can just call the method in the example above in your model factory like this:
 
 ```php
 <?php
