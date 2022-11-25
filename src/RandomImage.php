@@ -2,6 +2,10 @@
 
 namespace Emsifa\RandomImage;
 
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 class RandomImage
 {
     public function __construct(
@@ -21,19 +25,29 @@ class RandomImage
             : "https://source.unsplash.com/random/{$query}";
     }
 
-    public function store(string $directory = '', ?string $disk = null)
+    public function store(string $directory = '', ?string $disk = null): string
     {
-        // unimplemented
+        $filename = Str::random(28).'-'.uniqid().'.jpeg';
+        $filepath = rtrim($directory, '/').'/'.$filename;
+
+        return $this->storeAs($filepath, $disk);
     }
 
-    public function storeAs(string $filepath, ?string $disk = null)
+    public function storeAs(string $filepath, ?string $disk = null): string
     {
-        // unimplemented
+        $content = $this->download();
+        Storage::disk($disk)->put($filepath, $content);
+
+        return new ImageResult($filepath, $disk);
     }
 
-    protected function download()
+    protected function download(): string
     {
-        // unimplemented
+        return Http::throw()
+            ->withHeaders(config('random-image.headers'))
+            ->timeout(config('random-image.timeout'))
+            ->get($this->url())
+            ->body();
     }
 
     protected function getSizePath(): string|null
