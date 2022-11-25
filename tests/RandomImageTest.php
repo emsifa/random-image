@@ -17,10 +17,10 @@ it('generate correct url', function (RandomImage $img, $expect) {
 ]);
 
 it('store image to disk', function (RandomImage $generator) {
-    $result = $generator->store("test", "custom");
+    $result = $generator->store('test', 'custom');
 
-    expect(Storage::disk("custom")->exists($result))->toBeTrue();
-    expect(Storage::disk("custom")->get($result))->not->toBeEmpty();
+    expect(Storage::disk('custom')->exists($result))->toBeTrue();
+    expect(Storage::disk('custom')->get($result))->not->toBeEmpty();
 })
 ->with([
     'no argument' => RandomImage::make(),
