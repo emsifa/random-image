@@ -35,6 +35,8 @@ php artisan vendor:publish --tag="random-image-config"
 If you just want to get unsplash random url, you can use `url` method like an example below:
 
 ```php
+use Emsifa\RandomImage\RandomImage;
+
 RandomImage::make()->url();
 ```
 
@@ -81,6 +83,43 @@ RandomImage::make()->store('images')->url();    // "http://your-app.test/storage
 RandomImage::make()->storeAs('my-image.jpeg')->url();        // "http://your-app.test/storage/my-image.jpeg"
 RandomImage::make()->storeAs('images/my-image.jpeg')->url(); // "http://your-app.test/storage/images/my-image.jpeg"
 ```
+
+### Usage Example in Model Factory
+
+Basically this package is designed to be used in model factory, that is why 3 methods above returns a string.
+So in order to use it in model factory you can just call method in example aboves in your model factory like this:
+
+
+```php
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Emsifa\RandomImage\RandomImage;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Account>
+ */
+class PostFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'title' => $this->faker->words(5, true),
+            'body' => $this->faker->paragraphs(5, true),
+            'image' => RandomImage::make(600, 400)->store('posts', 'public'),
+        ];
+    }
+}
+```
+
+When you seed posts data using factory above, you can use `Storage::disk('public')->url($post->image)` to get the url. 
 
 ## Testing
 
