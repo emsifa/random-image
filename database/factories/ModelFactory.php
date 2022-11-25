@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Database\Factories;
+namespace Emsifa\RandomImage\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Emsifa\RandomImage\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class RandomImageCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'random-image';
 
     public $description = 'My command';
 
