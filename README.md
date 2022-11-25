@@ -97,7 +97,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Emsifa\RandomImage\RandomImage;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Account>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
  */
 class PostFactory extends Factory
 {
