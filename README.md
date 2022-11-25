@@ -1,19 +1,18 @@
-# Store random image from Unsplash to your Laravel application
+# RandomImage
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/emsifa/random-image.svg?style=flat-square)](https://packagist.org/packages/emsifa/random-image)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/emsifa/random-image/run-tests?label=tests)](https://github.com/emsifa/random-image/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/emsifa/random-image/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/emsifa/random-image/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/emsifa/random-image.svg?style=flat-square)](https://packagist.org/packages/emsifa/random-image)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+RandomImage is Laravel helper to get random image from [Unsplash](https://www.unsplash.com) and store it to your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
 
-## Support us
+## Features
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/random-image.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/random-image)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+* [x] Get random image URL.
+* [x] Store random image to filesystem.
+* [ ] Manipulate downloaded image.
+* [ ] Copy downloaded image and manipulate it (for generate thumbnail).
 
 ## Installation
 
@@ -23,37 +22,64 @@ You can install the package via composer:
 composer require emsifa/random-image
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="random-image-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="random-image-config"
 ```
 
-This is the contents of the published config file:
+## Usage Example
+
+### Get Random Image URL
+
+If you just want to get unsplash random url, you can use `url` method like an example below:
 
 ```php
-return [
-];
+RandomImage::make()->url();
 ```
 
-Optionally, you can publish the views using
+It will return `https://source.unsplash.com/random/` which will resulting different image if you use it in `<img/>` tag.
 
-```bash
-php artisan vendor:publish --tag="random-image-views"
-```
-
-## Usage
+You can also specify size and search terms inside `make` method like this:
 
 ```php
-$randomImage = new Emsifa\RandomImage();
-echo $randomImage->echoPhrase('Hello, Emsifa!');
+RandomImage::make(200)->url();                  // "https://source.unsplash.com/random/200x200/"
+RandomImage::make(300, 200)->url();             // "https://source.unsplash.com/random/300x200/"
+RandomImage::make(300, 200, 'cat,dog')->url();  // "https://source.unsplash.com/random/300x200/?cat,dog"
+RandomImage::make(query: 'cats')->url();        // "https://source.unsplash.com/random/?cats"
+```
+
+### Store Image
+
+You can use `store` or `storeAs` method to download and store image into your filesystem disk.
+
+```php
+RandomImage::make()->store();           // "{random-hash-name}.jpeg"
+RandomImage::make()->store('images');   // "images/{random-hash-name}.jpeg"
+```
+
+You can specify disk by defining `disk` parameter:
+
+```php
+RandomImage::make()->store('images', 's3'); // "images/{random-hash-name}.jpeg"
+RandomImage::make()->store(disk: 's3');     // "{random-hash-name}.jpeg"
+```
+
+Use `storeAs` if you want to specify filename:
+
+```php
+RandomImage::make()->storeAs('my-image.jpeg');        // "my-image.jpeg"
+RandomImage::make()->storeAs('images/my-image.jpeg'); // "images/my-image.jpeg"
+```
+
+You can also get stored URL just by chaining it with `url()` method like example below:
+
+```php
+RandomImage::make()->store()->url();            // "http://your-app.test/storage/{random-hash-name}.jpeg"
+RandomImage::make()->store('images')->url();    // "http://your-app.test/storage/images/{random-hash-name}.jpeg"
+
+RandomImage::make()->storeAs('my-image.jpeg')->url();        // "http://your-app.test/storage/my-image.jpeg"
+RandomImage::make()->storeAs('images/my-image.jpeg')->url(); // "http://your-app.test/storage/images/my-image.jpeg"
 ```
 
 ## Testing
