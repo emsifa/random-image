@@ -2,9 +2,9 @@
 
 namespace Emsifa\RandomImage\Tests;
 
+use Emsifa\RandomImage\RandomImageServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Emsifa\RandomImage\RandomImageServiceProvider;
 
 class TestCase extends Orchestra
 {

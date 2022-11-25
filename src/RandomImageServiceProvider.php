@@ -2,9 +2,9 @@
 
 namespace Emsifa\RandomImage;
 
+use Emsifa\RandomImage\Commands\RandomImageCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Emsifa\RandomImage\Commands\RandomImageCommand;
 
 class RandomImageServiceProvider extends PackageServiceProvider
 {
