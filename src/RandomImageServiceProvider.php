@@ -15,11 +15,6 @@ class RandomImageServiceProvider extends PackageServiceProvider
          *
          * More info: https://github.com/spatie/laravel-package-tools
          */
-        $package
-            ->name('random-image')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_random-image_table')
-            ->hasCommand(RandomImageCommand::class);
+        $package->name('random-image')->hasConfigFile();
     }
 }
