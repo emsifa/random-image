@@ -2,12 +2,15 @@
 
 namespace Emsifa\RandomImage;
 
+use Emsifa\RandomImage\Concerns\ImageResultManipulator;
 use Emsifa\RandomImage\Exceptions\CopyFailedException;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
 
 class ImageResult
 {
+    use ImageResultManipulator;
+
     public function __construct(
         protected string $path,
         protected ?string $disk = null,
@@ -17,6 +20,11 @@ class ImageResult
     public function path(): string
     {
         return $this->path;
+    }
+
+    public function fullPath(): string
+    {
+        return $this->disk()->path($this->path());
     }
 
     public function url(): string

@@ -11,8 +11,8 @@ Random Image is a Laravel helper to get random image from [Unsplash](https://www
 
 * [x] Get random image URL with search terms support.
 * [x] Store random image to filesystem.
-* [ ] Manipulate downloaded image.
-* [ ] Copy downloaded image and manipulate it (for thumbnail/placeholder image generation).
+* [x] Manipulate downloaded image.
+* [x] Copy downloaded image and manipulate it (for thumbnail/placeholder image generation).
 
 ## Installation
 
@@ -120,6 +120,45 @@ class PostFactory extends Factory
 ```
 
 When you seed posts data using factory above, you can use `Storage::disk('public')->url($post->image)` to get the url. 
+
+### Copy and Manipulate Downloaded Image
+
+In most case you may want to create a thumbnail version of the same image. We wrap some APIs from [intervention/image](https://image.intervention.io/v2) to do that kind of stuff.
+
+For example, in Post factory above, we want to define `thumbnail` field that contain a path for 300x200px version of the image:
+
+```php
+public function definition()
+{
+    $image = RandomImage::make(600, 400)->store('posts', 'public');
+    $thumbnail = $image->copy()->fit(300, 200);
+
+    // Resize to 300x200px and make it greyscale
+    // $thumbnail = $image->copy()->fit(300, 200)->greyscale();
+
+    // Use copyAs if you want to specify filename 
+    // $thumbnail = $image->copyAs('posts/my-thumb.jpg')->fit(300, 200);
+
+    return [
+        'title' => $this->faker->words(5, true),
+        'body' => $this->faker->paragraphs(5, true),
+        'image' => $image,
+        'thumbnail' => $thumbnail,
+    ];
+}
+```
+
+Here is a list of manipulation methods you can use:
+
+* `resize(width, height)`: Resizes current image based on given width and/or height. [(intervention docs)](https://image.intervention.io/v2/api/resize).
+* `crop(width, height)`: Cut out a rectangular part of the current image with given width and height. [(intervention docs)](https://image.intervention.io/v2/api/crop).
+* `fit(width, height)`: Combine cropping and resizing to format image in a smart way. [(intervention docs)](https://image.intervention.io/v2/api/fit).
+* `widen(width)`: Resizes the current image to new width, constraining aspect ratio. [(intervention docs)](https://image.intervention.io/v2/api/widen).
+* `heighten(height)`: Resizes the current image to new height, constraining aspect ratio. [(intervention docs)](https://image.intervention.io/v2/api/heighten).
+* `greyscale()`: Turns image into a greyscale version.. [(intervention docs)](https://image.intervention.io/v2/api/greyscale).
+* `blur()`: Apply a gaussian blur filter with a optional amount on the current image.. [(intervention docs)](https://image.intervention.io/v2/api/blur).
+
+> All methods above is available on the `ImageResult` instance which is returned from `store` method. So you can use it not only to copied image. But the original stored image too.
 
 ## Testing
 

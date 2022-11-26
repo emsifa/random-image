@@ -9,5 +9,9 @@ phpstan.neon
 testbench.yaml
 vendor
 node_modules
+
 storage/*
 !storage/.gitkeep
+
+tests/storage/*
+!tests/storage/sample-image.jpg
