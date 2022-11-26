@@ -9,10 +9,10 @@ Random Image is a Laravel helper to get random image from [Unsplash](https://www
 
 ## Features
 
-* [x] Get random image URL.
+* [x] Get random image URL with search terms support.
 * [x] Store random image to filesystem.
 * [ ] Manipulate downloaded image.
-* [ ] Copy downloaded image and manipulate it (for generate thumbnail).
+* [ ] Copy downloaded image and manipulate it (for thumbnail/placeholder image generation).
 
 ## Installation
 
