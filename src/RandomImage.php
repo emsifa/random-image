@@ -43,8 +43,12 @@ class RandomImage
     protected function download(): string
     {
         return Http::throw()
-            ->withHeaders(config('random-image.headers'))
-            ->timeout(config('random-image.timeout'))
+            ->withHeaders(config('random-image.headers', []))
+            ->timeout(config('random-image.timeout', 10))
+            ->retry(
+                config('random-image.retry.limit', 3),
+                config('random-image.retry.sleep', 500),
+            )
             ->get($this->url())
             ->body();
     }
