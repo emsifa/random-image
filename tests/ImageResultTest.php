@@ -1,54 +1,25 @@
 <?php
 
-use Emsifa\RandomImage\ImageResult;
+use Illuminate\Support\Facades\Storage;
 
 afterAll(function () {
     clear_test_files();
 });
 
-it('apply resize', function () {
+it('get correct url', function () {
     $image = create_test_image_result();
-    expect($image->resize(100, 100))->toBeInstanceOf(ImageResult::class);
+    $path = $image->path();
+
+    expect($image->url())->toEqual("http://random-image.test/storage/{$path}");
 });
 
-it('apply fit', function () {
+it('get correct full path', function () {
     $image = create_test_image_result();
-    expect($image->fit(200, 100))->toBeInstanceOf(ImageResult::class);
-});
+    $path = $image->path();
+    /**
+     * @var Illuminate\Filesystem\FilesystemAdapter\FilesystemAdapter
+     */
+    $disk = Storage::disk("test");
 
-it('apply crop', function () {
-    $image = create_test_image_result();
-    expect($image->crop(200, 100))->toBeInstanceOf(ImageResult::class);
-});
-
-it('apply widen', function () {
-    $image = create_test_image_result();
-    expect($image->widen(200))->toBeInstanceOf(ImageResult::class);
-});
-
-it('apply heighten', function () {
-    $image = create_test_image_result();
-    expect($image->heighten(200))->toBeInstanceOf(ImageResult::class);
-});
-
-it('apply greyscale', function () {
-    $image = create_test_image_result();
-    expect($image->greyscale())->toBeInstanceOf(ImageResult::class);
-});
-
-it('apply blur', function () {
-    $image = create_test_image_result();
-
-    // We resize it first to minimize the memory consumption
-    expect($image->resize(50, 50)->blur())->toBeInstanceOf(ImageResult::class);
-});
-
-it('apply toPng', function () {
-    $image = create_test_image_result();
-    expect($image->toPng())->toBeInstanceOf(ImageResult::class);
-});
-
-it('apply toWebp', function () {
-    $image = create_test_image_result();
-    expect($image->toWebp())->toBeInstanceOf(ImageResult::class);
+    expect($image->fullPath())->toEqual($disk->path($path));
 });
