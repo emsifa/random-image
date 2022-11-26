@@ -42,3 +42,13 @@ it('apply blur', function () {
     // We resize it first to minimize the memory consumption
     expect($image->resize(50, 50)->blur())->toBeInstanceOf(ImageResult::class);
 });
+
+it('apply toPng', function () {
+    $image = create_test_image_result();
+    expect($image->toPng())->toBeInstanceOf(ImageResult::class);
+});
+
+it('apply toWebp', function () {
+    $image = create_test_image_result();
+    expect($image->toWebp())->toBeInstanceOf(ImageResult::class);
+});
