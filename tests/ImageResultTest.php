@@ -25,7 +25,7 @@ it('get correct full path', function () {
 });
 
 it('copy image to another file', function () {
-    $disk = Storage::disk("test");
+    $disk = Storage::disk('test');
     $original = create_test_image_result();
     $copy = $original->copy();
 
