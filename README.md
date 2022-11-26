@@ -58,32 +58,32 @@ RandomImage::make(query: 'cats')->url();        // "https://source.unsplash.com/
 You can use `store` or `storeAs` method to download and store image into your filesystem disk.
 
 ```php
-RandomImage::make()->store();           // "{random-hash-name}.jpeg"
-RandomImage::make()->store('images');   // "images/{random-hash-name}.jpeg"
+RandomImage::make()->store();           // "{random-hash-name}.jpg"
+RandomImage::make()->store('images');   // "images/{random-hash-name}.jpg"
 ```
 
 You can specify disk by defining `disk` parameter:
 
 ```php
-RandomImage::make()->store('images', 's3'); // "images/{random-hash-name}.jpeg"
-RandomImage::make()->store(disk: 's3');     // "{random-hash-name}.jpeg"
+RandomImage::make()->store('images', 's3'); // "images/{random-hash-name}.jpg"
+RandomImage::make()->store(disk: 's3');     // "{random-hash-name}.jpg"
 ```
 
 Use `storeAs` if you want to specify filename:
 
 ```php
-RandomImage::make()->storeAs('my-image.jpeg');        // "my-image.jpeg"
-RandomImage::make()->storeAs('images/my-image.jpeg'); // "images/my-image.jpeg"
+RandomImage::make()->storeAs('my-image.jpg');        // "my-image.jpg"
+RandomImage::make()->storeAs('images/my-image.jpg'); // "images/my-image.jpg"
 ```
 
 You can also get stored URL just by chaining it with `url()` method like example below:
 
 ```php
-RandomImage::make()->store()->url();            // "http://your-app.test/storage/{random-hash-name}.jpeg"
-RandomImage::make()->store('images')->url();    // "http://your-app.test/storage/images/{random-hash-name}.jpeg"
+RandomImage::make()->store()->url();            // "http://your-app.test/storage/{random-hash-name}.jpg"
+RandomImage::make()->store('images')->url();    // "http://your-app.test/storage/images/{random-hash-name}.jpg"
 
-RandomImage::make()->storeAs('my-image.jpeg')->url();        // "http://your-app.test/storage/my-image.jpeg"
-RandomImage::make()->storeAs('images/my-image.jpeg')->url(); // "http://your-app.test/storage/images/my-image.jpeg"
+RandomImage::make()->storeAs('my-image.jpg')->url();        // "http://your-app.test/storage/my-image.jpg"
+RandomImage::make()->storeAs('images/my-image.jpg')->url(); // "http://your-app.test/storage/images/my-image.jpg"
 ```
 
 ### Usage Example in Model Factory

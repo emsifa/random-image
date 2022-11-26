@@ -26,7 +26,7 @@ class RandomImage
 
     public function store(string $directory = '', ?string $disk = null): ImageResult
     {
-        $filename = Helper::randomName().'.jpeg';
+        $filename = Helper::randomName().'.jpg';
         $filepath = rtrim($directory, '/').'/'.$filename;
 
         return $this->storeAs($filepath, $disk);
