@@ -28,15 +28,3 @@ it('store image to disk', function (RandomImage $generator) {
     'with height' => RandomImage::make(height: 100),
     'with width and height' => RandomImage::make(100, 50),
 ]);
-
-it('can copy image to another file', function () {
-    $original = RandomImage::make(100)->store('test-copy', 'custom');
-    $copy = $original->copy();
-
-    expect(Storage::disk('custom')->exists($original))->toBeTrue();
-    expect(Storage::disk('custom')->exists($copy))->toBeTrue();
-    expect(Storage::disk('custom')->get($original))->not->toBeEmpty();
-    expect(Storage::disk('custom')->get($copy))->not->toBeEmpty();
-
-    expect(Storage::disk('custom')->get($original))->toEqual(Storage::disk('custom')->get($copy));
-});
