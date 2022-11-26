@@ -44,7 +44,7 @@ class ImageResult
 
     public function copy(?string $disk = null): ImageResult
     {
-        $filename = Helper::randomName().".".$this->extension();
+        $filename = Helper::randomName().'.'.$this->extension();
         $dir = dirname($this->path);
 
         return $this->copyAs("{$dir}/{$filename}", $disk);
