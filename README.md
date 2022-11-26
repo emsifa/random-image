@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/emsifa/random-image/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/emsifa/random-image/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/emsifa/random-image.svg?style=flat-square)](https://packagist.org/packages/emsifa/random-image)
 
-Random Image is a Laravel helper to get random image from [Unsplash](https://www.unsplash.com) and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
+Random Image is a Laravel helper to get random image from [Unsplash](https://www.unsplash.com) and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.   
 
 ## Features
 
@@ -150,13 +150,13 @@ public function definition()
 
 Here is a list of manipulation methods you can use:
 
-* `resize(width, height)`: Resizes current image based on given width and/or height. [(intervention docs)](https://image.intervention.io/v2/api/resize).
-* `crop(width, height)`: Cut out a rectangular part of the current image with given width and height. [(intervention docs)](https://image.intervention.io/v2/api/crop).
-* `fit(width, height)`: Combine cropping and resizing to format image in a smart way. [(intervention docs)](https://image.intervention.io/v2/api/fit).
-* `widen(width)`: Resizes the current image to new width, constraining aspect ratio. [(intervention docs)](https://image.intervention.io/v2/api/widen).
-* `heighten(height)`: Resizes the current image to new height, constraining aspect ratio. [(intervention docs)](https://image.intervention.io/v2/api/heighten).
-* `greyscale()`: Turns image into a greyscale version.. [(intervention docs)](https://image.intervention.io/v2/api/greyscale).
-* `blur()`: Apply a gaussian blur filter with a optional amount on the current image.. [(intervention docs)](https://image.intervention.io/v2/api/blur).
+* `resize(width, height)`: Resizes current image based on given width and/or height. [(intervention docs)](https://image.intervention.io/v2/api/resize)
+* `crop(width, height, x, y)`: Cut out a rectangular part of the current image with given width and height. [(intervention docs)](https://image.intervention.io/v2/api/crop)
+* `fit(width, height)`: Combine cropping and resizing to format image in a smart way. [(intervention docs)](https://image.intervention.io/v2/api/fit)
+* `widen(width)`: Resizes the current image to new width, constraining aspect ratio. [(intervention docs)](https://image.intervention.io/v2/api/widen)
+* `heighten(height)`: Resizes the current image to new height, constraining aspect ratio. [(intervention docs)](https://image.intervention.io/v2/api/heighten)
+* `greyscale()`: Turns image into a greyscale version. [(intervention docs)](https://image.intervention.io/v2/api/greyscale).
+* `blur()`: Apply a gaussian blur filter with a optional amount on the current image. [(intervention docs)](https://image.intervention.io/v2/api/blur)
 
 > All methods above is available on the `ImageResult` instance which is returned from `store` method. So you can use it not only to copied image. But the original stored image too.
 
