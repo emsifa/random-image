@@ -8,7 +8,7 @@ use Intervention\Image\ImageManager;
 
 trait ImageResultManipulator
 {
-    public function fit(int $width, ?int $height, ?string $position, ?Closure $callback = null): ImageResult
+    public function fit(int $width, ?int $height, ?string $position = null, ?Closure $callback = null): ImageResult
     {
         return $this->applyManipulation('fit', [$width, $height, $callback, $position]);
     }

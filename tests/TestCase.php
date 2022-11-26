@@ -16,6 +16,11 @@ class TestCase extends Orchestra
             'driver' => 'local',
             'root' => realpath(__DIR__.'/../storage'),
         ]));
+
+        Storage::set('test', Storage::createLocalDriver([
+            'driver' => 'local',
+            'root' => realpath(__DIR__.'/storage'),
+        ]));
     }
 
     protected function getPackageProviders($app)
