@@ -20,6 +20,7 @@ class TestCase extends Orchestra
         Storage::set('test', Storage::createLocalDriver([
             'driver' => 'local',
             'root' => realpath(__DIR__.'/storage'),
+            'url' => 'http://random-image.test/storage',
         ]));
     }
 
