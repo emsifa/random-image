@@ -1,11 +1,11 @@
-# RandomImage
+# Random Image
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/emsifa/random-image.svg?style=flat-square)](https://packagist.org/packages/emsifa/random-image)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/emsifa/random-image/run-tests?label=tests)](https://github.com/emsifa/random-image/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/emsifa/random-image/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/emsifa/random-image/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/emsifa/random-image.svg?style=flat-square)](https://packagist.org/packages/emsifa/random-image)
 
-RandomImage is a Laravel helper to get random image from [Unsplash](https://www.unsplash.com) and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
+Random Image is a Laravel helper to get random image from [Unsplash](https://www.unsplash.com) and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
 
 ## Features
 
@@ -19,10 +19,12 @@ RandomImage is a Laravel helper to get random image from [Unsplash](https://www.
 You can install the package via composer:
 
 ```bash
-composer require emsifa/random-image
+composer require emsifa/random-image --dev
 ```
 
-You can publish the config file with:
+> Remove `--dev` flag if you are planned to use this library in production
+
+After that, you may want to publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="random-image-config"
@@ -135,8 +137,9 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Unsplash](https://unsplash.com/)
-- [Muhammad Syifa](https://github.com/emsifa)
+- [Muhammad Syifa](https://github.com/emsifa) (creator)
+- [Unsplash](https://unsplash.com/) (image source)
+- [Spatie] (https://github.com/spatie/package-skeleton-laravel) (package skeleton)
 - [All Contributors](../../contributors)
 
 ## License
