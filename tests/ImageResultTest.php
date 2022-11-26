@@ -19,7 +19,7 @@ it('get correct full path', function () {
     /**
      * @var Illuminate\Filesystem\FilesystemAdapter\FilesystemAdapter
      */
-    $disk = Storage::disk("test");
+    $disk = Storage::disk('test');
 
     expect($image->fullPath())->toEqual($disk->path($path));
 });
