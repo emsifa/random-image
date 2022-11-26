@@ -4,7 +4,6 @@ namespace Emsifa\RandomImage;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class RandomImage
 {
@@ -27,7 +26,7 @@ class RandomImage
 
     public function store(string $directory = '', ?string $disk = null): ImageResult
     {
-        $filename = Str::random(28).'-'.uniqid().'.jpeg';
+        $filename = Helper::randomName().'.jpeg';
         $filepath = rtrim($directory, '/').'/'.$filename;
 
         return $this->storeAs($filepath, $disk);
