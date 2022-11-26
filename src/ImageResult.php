@@ -37,9 +37,14 @@ class ImageResult
         return Storage::disk($this->disk);
     }
 
+    public function extension()
+    {
+        return pathinfo($this->path(), PATHINFO_EXTENSION);
+    }
+
     public function copy(?string $disk = null): ImageResult
     {
-        $filename = Helper::randomName();
+        $filename = Helper::randomName().".".$this->extension();
         $dir = dirname($this->path);
 
         return $this->copyAs("{$dir}/{$filename}", $disk);
