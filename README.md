@@ -139,7 +139,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 - [Muhammad Syifa](https://github.com/emsifa) (creator)
 - [Unsplash](https://unsplash.com/) (image source)
-- [Spatie] (https://github.com/spatie/package-skeleton-laravel) (package skeleton)
+- [Spatie](https://github.com/spatie/package-skeleton-laravel) (package skeleton)
 - [All Contributors](../../contributors)
 
 ## License
