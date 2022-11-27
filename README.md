@@ -5,7 +5,12 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/emsifa/random-image/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/emsifa/random-image/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/emsifa/random-image.svg?style=flat-square)](https://packagist.org/packages/emsifa/random-image)
 
-Random Image is a Laravel helper to get random image from [Unsplash](https://www.unsplash.com) and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.   
+Random Image is a Laravel helper to get random image and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
+
+For image provider service, you can choose:
+
+- [LoremFlickr](https://loremflickr.com) (default)
+- [Unsplash](https://unsplash.com)
 
 ## Features
 
@@ -30,11 +35,13 @@ After that, you may want to publish the config file with:
 php artisan vendor:publish --tag="random-image-config"
 ```
 
+It will generate `config/random-image.php` file in your project directory.
+
 ## Usage Example
 
 ### Get Random Image URL
 
-If you just want to get unsplash random url, you can use `url` method like an example below:
+If you just want to get image url from provider, you can use `url` method like an example below:
 
 ```php
 use Emsifa\RandomImage\RandomImage;
@@ -42,16 +49,25 @@ use Emsifa\RandomImage\RandomImage;
 RandomImage::make()->url();
 ```
 
-It will return `https://source.unsplash.com/random/` which will resulting different image if you use it in `<img/>` tag.
+It will return `https://loremflickr.com/600/400/` which will resulting different image if you use it in `<img/>` tag.
 
 You can also specify size and search terms inside `make` method like this:
 
 ```php
+// With LoremFlickr Provider
+RandomImage::make(200)->url();                  // "https://loremflickr.com/200/200/"
+RandomImage::make(300, 200)->url();             // "https://loremflickr.com/300/200/"
+RandomImage::make(300, 200, 'cat,dog')->url();  // "https://loremflickr.com/300/200/cat,dog"
+RandomImage::make(query: 'cats')->url();        // "https://loremflickr.com/600/400/cats"
+
+// With Unsplash Provider
 RandomImage::make(200)->url();                  // "https://source.unsplash.com/random/200x200/"
 RandomImage::make(300, 200)->url();             // "https://source.unsplash.com/random/300x200/"
 RandomImage::make(300, 200, 'cat,dog')->url();  // "https://source.unsplash.com/random/300x200/?cat,dog"
 RandomImage::make(query: 'cats')->url();        // "https://source.unsplash.com/random/?cats"
 ```
+
+> You can change provider in `config/random-image.php` file.
 
 ### Store Image
 
@@ -177,10 +193,6 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Muhammad Syifa](https://github.com/emsifa) (creator)
-- [Unsplash](https://unsplash.com/) (image source)
-- [Spatie](https://github.com/spatie/package-skeleton-laravel) (package skeleton)
-- [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+- [LoremFlickr](https://loremflickr.com/) (image source)
+ator)
+icense (MIT). Please see [License File](LICENSE.md) for more information.
