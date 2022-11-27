@@ -39,7 +39,11 @@ class RandomImage
         $content = $this->download();
         Storage::disk($disk)->put($filepath, $content);
 
-        return new ImageResult($filepath, $disk);
+        $image = new ImageResult($filepath, $disk);
+
+        History::push($image);
+
+        return $image;
     }
 
     protected function download(): string
@@ -75,5 +79,10 @@ class RandomImage
     public static function getProvider(): Provider|null
     {
         return static::$provider;
+    }
+
+    public static function previous(): ImageResult|null
+    {
+        return History::last();
     }
 }
