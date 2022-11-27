@@ -164,6 +164,20 @@ public function definition()
 }
 ```
 
+NEW: You can use `previous` method to do the same thing as example above, but much simpler.
+
+```php
+public function definition()
+{
+    return [
+        'title' => $this->faker->words(5, true),
+        'body' => $this->faker->paragraphs(5, true),
+        'image' => RandomImage::make(600, 400)->store('posts', 'public'),
+        'thumbnail' => RandomImage::previous()->copy()->fit(300, 200),
+    ];
+}
+```
+
 Here is a list of manipulation methods you can use:
 
 * `resize(width, height)`: Resizes current image based on given width and/or height. [(intervention docs)](https://image.intervention.io/v2/api/resize)
