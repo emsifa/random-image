@@ -36,6 +36,11 @@ it('apply greyscale', function () {
     expect($image->greyscale())->toBeInstanceOf(ImageResult::class);
 });
 
+it('apply grayscale', function () {
+    $image = create_test_image_result();
+    expect($image->grayscale())->toBeInstanceOf(ImageResult::class);
+});
+
 it('apply blur', function () {
     $image = create_test_image_result();
 

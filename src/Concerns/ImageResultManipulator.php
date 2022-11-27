@@ -38,6 +38,11 @@ trait ImageResultManipulator
         return $this->applyManipulation('greyscale');
     }
 
+    public function grayscale(): ImageResult
+    {
+        return $this->greyscale();
+    }
+
     public function blur(?int $amount = null): ImageResult
     {
         return $this->applyManipulation('blur', [$amount]);
