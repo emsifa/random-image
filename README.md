@@ -194,5 +194,10 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 - [Muhammad Syifa](https://github.com/emsifa) (creator)
 - [LoremFlickr](https://loremflickr.com/) (image source)
-ator)
-icense (MIT). Please see [License File](LICENSE.md) for more information.
+- [Unsplash](https://unsplash.com/) (image source)
+- [Spatie](https://github.com/spatie/package-skeleton-laravel) (package skeleton)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
