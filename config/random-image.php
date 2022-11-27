@@ -1,7 +1,19 @@
 <?php
 
 // config for Emsifa/RandomImage
+
 return [
+    /*
+    |---------------------------------------------------------------------------------
+    | Provider
+    |---------------------------------------------------------------------------------
+    | Image provider to used
+    | Built-in Provider:
+    | - "Emsifa\RandomImage\Providers\UnsplashProvider"
+    | - "Emsifa\RandomImage\Providers\LoremFlickrProvider"
+    */
+    'provider' => "Emsifa\RandomImage\Providers\LoremFlickrProvider",
+
     /*
     |---------------------------------------------------------------------------------
     | Timeout option

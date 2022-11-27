@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 
 class RandomImage
 {
+    protected static $provider;
+
     public function __construct(
         protected ?int $width = null,
         protected ?int $height = null,
@@ -16,12 +18,12 @@ class RandomImage
 
     public function url()
     {
-        $size = $this->getSizePath();
-        $query = $this->query ? '?'.rawurlencode($this->query) : '';
+        return $this->provider()->generateUrl($this->width, $this->height, $this->query);
+    }
 
-        return $size
-            ? "https://source.unsplash.com/random/{$size}/{$query}"
-            : "https://source.unsplash.com/random/{$query}";
+    public function provider(): Provider
+    {
+        return static::$provider;
     }
 
     public function store(string $directory = '', ?string $disk = null): ImageResult
@@ -53,19 +55,6 @@ class RandomImage
             ->body();
     }
 
-    protected function getSizePath(): string|null
-    {
-        if ($this->width && $this->height) {
-            return "{$this->width}x{$this->height}";
-        } elseif ($this->width || $this->height) {
-            $size = $this->width ?: $this->height;
-
-            return "{$size}x{$size}";
-        } else {
-            return null;
-        }
-    }
-
     public static function make(
         ?int $width = null,
         ?int $height = null,
@@ -76,5 +65,15 @@ class RandomImage
             height: $height,
             query: $query,
         );
+    }
+
+    public static function setProvider(Provider $provider)
+    {
+        static::$provider = $provider;
+    }
+
+    public static function getProvider(): Provider|null
+    {
+        return static::$provider;
     }
 }
