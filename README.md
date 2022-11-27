@@ -186,6 +186,7 @@ Here is a list of manipulation methods you can use:
 * `widen(width)`: Resizes the current image to new width, constraining aspect ratio. [(intervention docs)](https://image.intervention.io/v2/api/widen)
 * `heighten(height)`: Resizes the current image to new height, constraining aspect ratio. [(intervention docs)](https://image.intervention.io/v2/api/heighten)
 * `greyscale()`: Turns image into a greyscale version. [(intervention docs)](https://image.intervention.io/v2/api/greyscale).
+* `grayscale()`: An alias of greyscale.
 * `blur()`: Apply a gaussian blur filter with a optional amount on the current image. [(intervention docs)](https://image.intervention.io/v2/api/blur)
 
 > All methods above is available on the `ImageResult` instance which is returned from `store` method. So you can use it not only to copied image. But the original stored image too.
