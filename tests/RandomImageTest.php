@@ -4,7 +4,7 @@ use Emsifa\RandomImage\History;
 use Emsifa\RandomImage\RandomImage;
 use Illuminate\Support\Facades\Storage;
 
-beforeEach(function() {
+beforeEach(function () {
     History::clear();
 });
 
