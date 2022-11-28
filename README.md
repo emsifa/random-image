@@ -220,8 +220,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Muhammad Syifa](https://github.com/emsifa) (creator)
-- [LoremFlickr](https://loremflickr.com/) (image source)
-- [Unsplash](https://unsplash.com/) (image source)
+- [LoremFlickr](https://loremflickr.com/) (image provider)
+- [Unsplash](https://unsplash.com/) (image provider)
 - [Spatie](https://github.com/spatie/package-skeleton-laravel) (package skeleton)
 - [All Contributors](../../contributors)
 
