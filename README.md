@@ -56,17 +56,20 @@ It will return `https://loremflickr.com/600/400/` which will resulting different
 You can also specify size and search terms inside `make` method like this:
 
 ```php
-// With LoremFlickr Provider
 RandomImage::make(200)->url();                  // "https://loremflickr.com/200/200/"
 RandomImage::make(300, 200)->url();             // "https://loremflickr.com/300/200/"
 RandomImage::make(300, 200, 'cat,dog')->url();  // "https://loremflickr.com/300/200/cat,dog"
 RandomImage::make(query: 'cats')->url();        // "https://loremflickr.com/600/400/cats"
+```
 
-// With Unsplash Provider
+The URL returned will be different for every provider. For example, if you use Unsplash provider, the URL generated would be like this:
+
+```php
 RandomImage::make(200)->url();                  // "https://source.unsplash.com/random/200x200/"
 RandomImage::make(300, 200)->url();             // "https://source.unsplash.com/random/300x200/"
 RandomImage::make(300, 200, 'cat,dog')->url();  // "https://source.unsplash.com/random/300x200/?cat,dog"
 RandomImage::make(query: 'cats')->url();        // "https://source.unsplash.com/random/?cats"
+
 ```
 
 > You can change provider in `config/random-image.php` file.
