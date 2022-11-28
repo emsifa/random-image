@@ -7,10 +7,12 @@
 
 Random Image is a Laravel helper to get random image and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
 
-For image provider service, you can choose:
+Currently we support 2 random image provider you can choose:
 
-- [LoremFlickr](https://loremflickr.com) (default)
-- [Unsplash](https://unsplash.com)
+1. [LoremFlickr](https://loremflickr.com) (default)
+2. [Unsplash](https://unsplash.com)
+
+Please see their website for the license information.
 
 ## Features
 
@@ -102,9 +104,19 @@ RandomImage::make()->storeAs('my-image.jpg')->url();        // "http://your-app.
 RandomImage::make()->storeAs('images/my-image.jpg')->url(); // "http://your-app.test/storage/images/my-image.jpg"
 ```
 
+Or if you want to get the filename only, you can chain it with `name()` method.
+
+```php
+RandomImage::make()->store()->name();            // "{random-hash-name}.jpg"
+RandomImage::make()->store('images')->name();    // "{random-hash-name}.jpg"
+
+RandomImage::make()->storeAs('my-image.jpg')->name();        // "my-image.jpg"
+RandomImage::make()->storeAs('images/my-image.jpg')->name(); // "my-image.jpg"
+```
+
 ### Usage Example in Model Factory
 
-This package is designed to be used in the model factory, which is why the 3 methods above return a string. So to use it in the model factory you can just call the method in the example above in your model factory like this:
+This package is designed to be used in the model factory, which is why methods above return a string of image path/url so you can just store it in the database. To use it in the model factory, you can just call the method in the example above in your model factory like this:
 
 ```php
 <?php
