@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Storage;
 use Emsifa\RandomImage\ImageResult;
+use Illuminate\Support\Facades\Storage;
 
 afterAll(function () {
     clear_test_files();
@@ -18,9 +18,9 @@ it('get correct filename', function (ImageResult $image, $expect) {
     expect($image->name())->toEqual($expect);
 })
 ->with([
-    [new ImageResult("lorem.jpg"), "lorem.jpg"],
-    [new ImageResult("lorem/ipsum.jpg"), "ipsum.jpg"],
-    [new ImageResult("lorem/ipsum/dolor.jpg"), "dolor.jpg"],
+    [new ImageResult('lorem.jpg'), 'lorem.jpg'],
+    [new ImageResult('lorem/ipsum.jpg'), 'ipsum.jpg'],
+    [new ImageResult('lorem/ipsum/dolor.jpg'), 'dolor.jpg'],
 ]);
 
 it('get correct full path', function () {
