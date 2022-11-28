@@ -27,6 +27,11 @@ class ImageResult
         return $this->disk()->path($this->path());
     }
 
+    public function name(): string
+    {
+        return pathinfo($this->path(), PATHINFO_BASENAME);
+    }
+
     public function url(): string
     {
         return $this->disk()->url($this->path());

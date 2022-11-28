@@ -1,5 +1,6 @@
 <?php
 
+use Emsifa\RandomImage\ImageResult;
 use Illuminate\Support\Facades\Storage;
 
 afterAll(function () {
@@ -12,6 +13,15 @@ it('get correct url', function () {
 
     expect($image->url())->toEqual("http://random-image.test/storage/{$path}");
 });
+
+it('get correct filename', function (ImageResult $image, $expect) {
+    expect($image->name())->toEqual($expect);
+})
+->with([
+    [new ImageResult('lorem.jpg'), 'lorem.jpg'],
+    [new ImageResult('lorem/ipsum.jpg'), 'ipsum.jpg'],
+    [new ImageResult('lorem/ipsum/dolor.jpg'), 'dolor.jpg'],
+]);
 
 it('get correct full path', function () {
     $image = create_test_image_result();
