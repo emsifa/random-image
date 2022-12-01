@@ -17,12 +17,7 @@ class RandomImage
 
     public function url()
     {
-        return $this->provider()->generateUrl($this->width, $this->height, $this->query);
-    }
-
-    public function provider(): Provider
-    {
-        return $this->provider;
+        return $this->provider->generateUrl($this->width, $this->height, $this->query);
     }
 
     public function store(string $directory = '', ?string $disk = null): ImageResult
