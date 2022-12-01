@@ -19,7 +19,7 @@ class RandomImageServiceProvider extends PackageServiceProvider
 
     public function boot()
     {
-        $provider = app()->make(config('random-image.provider'));
-        RandomImage::setProvider($provider);
+        $providerClass = config('random-image.provider');
+        $this->app->bind(Provider::class, $providerClass);
     }
 }
