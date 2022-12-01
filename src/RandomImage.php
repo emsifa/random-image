@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Storage;
 
 class RandomImage
 {
-    protected static $provider;
-
     public function __construct(
+        protected Provider $provider,
         protected ?int $width = null,
         protected ?int $height = null,
         protected ?string $query = null,
@@ -23,7 +22,7 @@ class RandomImage
 
     public function provider(): Provider
     {
-        return static::$provider;
+        return $this->provider;
     }
 
     public function store(string $directory = '', ?string $disk = null): ImageResult
@@ -65,20 +64,11 @@ class RandomImage
         ?string $query = null,
     ): self {
         return new self(
+            provider: app()->make(Provider::class),
             width: $width,
             height: $height,
             query: $query,
         );
-    }
-
-    public static function setProvider(Provider $provider)
-    {
-        static::$provider = $provider;
-    }
-
-    public static function getProvider(): Provider|null
-    {
-        return static::$provider;
     }
 
     public static function previous(): ImageResult|null
