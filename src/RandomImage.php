@@ -15,6 +15,13 @@ class RandomImage
     ) {
     }
 
+    public function withProvider(Provider $provider): static
+    {
+        $this->provider = $provider;
+
+        return $this;
+    }
+
     public function url()
     {
         return $this->provider->generateUrl($this->width, $this->height, $this->query);
@@ -57,9 +64,10 @@ class RandomImage
         ?int $width = null,
         ?int $height = null,
         ?string $query = null,
+        ?Provider $provider = null,
     ): self {
         return new self(
-            provider: app()->make(Provider::class),
+            provider: $provider ?? app()->make(Provider::class),
             width: $width,
             height: $height,
             query: $query,
