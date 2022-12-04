@@ -11,6 +11,7 @@ return [
     | Built-in Provider:
     | - "Emsifa\RandomImage\Providers\UnsplashProvider"
     | - "Emsifa\RandomImage\Providers\LoremFlickrProvider"
+    | - "Emsifa\RandomImage\Providers\LoremPicsumProvider" (doesn't support query)
     */
     'provider' => "Emsifa\RandomImage\Providers\LoremFlickrProvider",
 
