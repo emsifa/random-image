@@ -11,6 +11,7 @@ Currently we support 2 random image provider you can choose:
 
 1. [LoremFlickr](https://loremflickr.com) (default)
 2. [Unsplash](https://unsplash.com)
+3. [LoremPicsum](https://picsum.photos) (doesn't support search query)
 
 Please see their website for the license information.
 
@@ -225,6 +226,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 - [Muhammad Syifa](https://github.com/emsifa) (creator)
 - [LoremFlickr](https://loremflickr.com/) (image provider)
 - [Unsplash](https://unsplash.com/) (image provider)
+- [Lorem Picsum](https://picsum.photos) (image provider)
 - [Spatie](https://github.com/spatie/package-skeleton-laravel) (package skeleton)
 - [All Contributors](../../contributors)
 
