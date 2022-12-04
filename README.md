@@ -7,7 +7,7 @@
 
 Random Image is a Laravel helper to get random image and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
 
-Currently we support 2 random image provider you can choose:
+Currently we have 3 random image provider you can choose:
 
 1. [LoremFlickr](https://loremflickr.com) (default)
 2. [Unsplash](https://unsplash.com)
