@@ -52,11 +52,12 @@ class ImageResult
         $filename = Helper::randomName().'.'.$this->extension();
         $dir = dirname($this->path);
 
-        return $this->copyAs("{$dir}/{$filename}", $disk);
+        return $this->copyAs($dir, $filename, $disk);
     }
 
-    public function copyAs(string $filepath, ?string $disk = null): ImageResult
+    public function copyAs(string $path, string $filename, ?string $disk = null): ImageResult
     {
+        $filepath = rtrim($path, '/').'/'.ltrim($filename, '/');
         $disk = $disk ?? $this->disk;
         $succeed = $this->disk === $disk
             ? Storage::disk($disk)->copy($this->path, $filepath)

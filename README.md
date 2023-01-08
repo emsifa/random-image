@@ -94,8 +94,8 @@ RandomImage::make()->store(disk: 's3');     // "{random-hash-name}.jpg"
 Use `storeAs` if you want to specify filename:
 
 ```php
-RandomImage::make()->storeAs('my-image.jpg');        // "my-image.jpg"
-RandomImage::make()->storeAs('images/my-image.jpg'); // "images/my-image.jpg"
+RandomImage::make()->storeAs('', 'my-image.jpg');       // "my-image.jpg"
+RandomImage::make()->storeAs('images', 'my-image.jpg'); // "images/my-image.jpg"
 ```
 
 You can also get stored URL just by chaining it with `url()` method like example below:
@@ -104,8 +104,8 @@ You can also get stored URL just by chaining it with `url()` method like example
 RandomImage::make()->store()->url();            // "http://your-app.test/storage/{random-hash-name}.jpg"
 RandomImage::make()->store('images')->url();    // "http://your-app.test/storage/images/{random-hash-name}.jpg"
 
-RandomImage::make()->storeAs('my-image.jpg')->url();        // "http://your-app.test/storage/my-image.jpg"
-RandomImage::make()->storeAs('images/my-image.jpg')->url(); // "http://your-app.test/storage/images/my-image.jpg"
+RandomImage::make()->storeAs('', 'my-image.jpg')->url();       // "http://your-app.test/storage/my-image.jpg"
+RandomImage::make()->storeAs('images', 'my-image.jpg')->url(); // "http://your-app.test/storage/images/my-image.jpg"
 ```
 
 Or if you want to get the filename only, you can chain it with `name()` method.
@@ -114,8 +114,8 @@ Or if you want to get the filename only, you can chain it with `name()` method.
 RandomImage::make()->store()->name();            // "{random-hash-name}.jpg"
 RandomImage::make()->store('images')->name();    // "{random-hash-name}.jpg"
 
-RandomImage::make()->storeAs('my-image.jpg')->name();        // "my-image.jpg"
-RandomImage::make()->storeAs('images/my-image.jpg')->name(); // "my-image.jpg"
+RandomImage::make()->storeAs('', 'my-image.jpg')->name();        // "my-image.jpg"
+RandomImage::make()->storeAs('images', 'my-image.jpg')->name();  // "my-image.jpg"
 ```
 
 ### Usage Example in Model Factory
@@ -169,7 +169,7 @@ public function definition()
     // $thumbnail = $image->copy()->fit(300, 200)->greyscale();
 
     // Use copyAs if you want to specify filename 
-    // $thumbnail = $image->copyAs('posts/my-thumb.jpg')->fit(300, 200);
+    // $thumbnail = $image->copyAs('posts', 'my-thumb.jpg')->fit(300, 200);
 
     return [
         'title' => $this->faker->words(5, true),

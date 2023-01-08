@@ -30,13 +30,13 @@ class RandomImage
     public function store(string $directory = '', ?string $disk = null): ImageResult
     {
         $filename = Helper::randomName().'.jpg';
-        $filepath = rtrim($directory, '/').'/'.$filename;
 
-        return $this->storeAs($filepath, $disk);
+        return $this->storeAs($directory, $filename, $disk);
     }
 
-    public function storeAs(string $filepath, ?string $disk = null): ImageResult
+    public function storeAs(string $path, string $filename, ?string $disk = null): ImageResult
     {
+        $filepath = rtrim($path, '/').'/'.ltrim($filename, '/');
         $content = $this->download();
         Storage::disk($disk)->put($filepath, $content);
 
