@@ -1,8 +1,8 @@
 # Random Image
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/emsifa/random-image.svg?style=flat-square)](https://packagist.org/packages/emsifa/random-image)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/emsifa/random-image/run-tests?label=tests)](https://github.com/emsifa/random-image/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/emsifa/random-image/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/emsifa/random-image/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/emsifa/random-image/run-tests.yml?label=tests)](https://github.com/emsifa/random-image/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/emsifa/random-image/fix-php-code-style-issues.yml?label=code%20style)](https://github.com/emsifa/random-image/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/emsifa/random-image.svg?style=flat-square)](https://packagist.org/packages/emsifa/random-image)
 
 Random Image is a Laravel helper to get random image and store it in your application. It is designed to be used in [model factory](https://laravel.com/docs/9.x/eloquent-factories) to seed dummy data.
